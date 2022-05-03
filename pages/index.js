@@ -1,6 +1,9 @@
 import Head from "next/head";
+import { Login, Profile } from "../components";
+import { useMoralis } from "react-moralis";
 
 export default function Home() {
+  const { isAuthenticated } = useMoralis();
   return (
     <div>
       <Head>
@@ -10,9 +13,7 @@ export default function Home() {
       </Head>
 
       <main className="flex items-center justify-center h-screen">
-        <h1 className="underline text-4xl">
-          This is Clean NextJS and TailwindCSS Template
-        </h1>
+        {isAuthenticated ? <Profile /> : <Login />}
       </main>
     </div>
   );
